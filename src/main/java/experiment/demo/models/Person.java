@@ -17,6 +17,9 @@ public class Person {
 	private Long id;
 	// https://www.baeldung.com/hibernate-one-to-many
 	// https://www.baeldung.com/jpa-many-to-many
+	// https://discourse.hibernate.org/t/hibernate-lazy-mode-doesnt-work-with-spring-boot/1535/9
+	// https://vladmihalcea.com/the-best-way-to-handle-the-lazyinitializationexception/
+	
 	@ManyToMany
 	@JoinTable(
 			  name = "meetings_attended", 
