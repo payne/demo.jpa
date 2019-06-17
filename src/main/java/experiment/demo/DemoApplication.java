@@ -50,10 +50,8 @@ public class DemoApplication implements CommandLineRunner {
 		Optional<Person> alsoMatt = personRepository.findById(matt.getId());
 		boolean p = alsoMatt.isPresent();
 		Person matt2 = alsoMatt.get();
-/* 		
  		int numMeetings = matt2.getMeetings().size();
-		System.out.println(numMeetings);
-		*/
+		System.out.println("\n\n"+numMeetings+"\n\n");
 	}
 
 }

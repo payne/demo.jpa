@@ -20,7 +20,7 @@ public class Person {
 	// https://discourse.hibernate.org/t/hibernate-lazy-mode-doesnt-work-with-spring-boot/1535/9
 	// https://vladmihalcea.com/the-best-way-to-handle-the-lazyinitializationexception/
 	
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(
 			  name = "meetings_attended", 
 			  joinColumns = @JoinColumn(name = "person_id"), 
