@@ -10,10 +10,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import experiment.demo.models.Actor;
 import experiment.demo.models.Genre;
 import experiment.demo.models.Meeting;
 import experiment.demo.models.Movie;
 import experiment.demo.models.Person;
+import experiment.demo.repositories.ActorRepository;
 import experiment.demo.repositories.GenreRepository;
 import experiment.demo.repositories.MeetingRepository;
 import experiment.demo.repositories.MovieRepository;
@@ -32,6 +34,9 @@ public class DemoApplication implements CommandLineRunner {
 	private MovieRepository movieRepository;
 	
 	@Autowired
+	private ActorRepository actorRepository;
+	
+	@Autowired
 	private GenreRepository genreRepository;
 
 	public static void main(String[] args) {
@@ -46,10 +51,24 @@ public class DemoApplication implements CommandLineRunner {
 		theRock.setDescription("Classic sequel to James Bond");
 		theRock.setGenre(action);
 		movieRepository.save(theRock);
+		Actor nickCage = new Actor();
+		nickCage.setName("Nick Cage");
+		Set<Movie> movies = new HashSet<>();
+		movies.add(theRock);
+		nickCage.setMovies(movies);
+		actorRepository.save(nickCage);
+
 		Movie theRundown = new Movie();
 		theRundown.setTitle("The Rundown");
+		theRundown.setDescription("To pay off a debt, there is one last run down.");
 		theRundown.setGenre(action);
+		movies = new HashSet<>();
+		movies.add(theRundown);
+		Actor dwayne = new Actor();
+		dwayne.setName("Dwayne 'the Rock' Johnson");
+		dwayne.setMovies(movies);
 		movieRepository.save(theRundown);
+		actorRepository.save(dwayne);
 	}
 	
 	@Override
