@@ -46,17 +46,29 @@ public class DemoApplication implements CommandLineRunner {
 	private void insertMovies() throws Exception {
 		Genre action = new Genre(1L, "Action");
 		genreRepository.save(action);
+
+		Movie snowpiercer = new Movie();
+		snowpiercer.setTitle("Snowpiercer");
+		snowpiercer.setDescription("End of the world & society is on a train.");
+		snowpiercer.setGenre(action);
+		movieRepository.save(snowpiercer);
+
 		Movie theRock = new Movie();
 		theRock.setTitle("The Rock");
 		theRock.setDescription("Classic sequel to James Bond");
 		theRock.setGenre(action);
 		movieRepository.save(theRock);
+		Actor edHarris = new Actor();
+		edHarris.setName("Ed Harris");
 		Actor nickCage = new Actor();
 		nickCage.setName("Nick Cage");
 		Set<Movie> movies = new HashSet<>();
 		movies.add(theRock);
 		nickCage.setMovies(movies);
 		actorRepository.save(nickCage);
+		movies.add(snowpiercer);
+		edHarris.setMovies(movies);
+		actorRepository.save(edHarris);
 
 		Movie theRundown = new Movie();
 		theRundown.setTitle("The Rundown");
@@ -69,6 +81,7 @@ public class DemoApplication implements CommandLineRunner {
 		dwayne.setMovies(movies);
 		movieRepository.save(theRundown);
 		actorRepository.save(dwayne);
+		
 	}
 	
 	@Override
