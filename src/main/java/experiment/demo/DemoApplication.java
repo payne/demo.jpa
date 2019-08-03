@@ -43,6 +43,7 @@ public class DemoApplication implements CommandLineRunner {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
+	// Really need to shift this to the builder pattern
 	private void insertMovies() throws Exception {
 		Genre action = new Genre(1L, "Action");
 		genreRepository.save(action);
